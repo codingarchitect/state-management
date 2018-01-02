@@ -1,4 +1,5 @@
 /* eslint fp/no-nil: 1 */
+/* eslint fp/no-unused-expression: 1 */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Alert as BootstrapAlert } from 'react-bootstrap';
@@ -16,11 +17,15 @@ const mapStateToProps = state => ({
   alertVisible: AlertStore.selectors.visibility(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: {
-    close: () => dispatch(AlertStore.actionCreators.setVisibility(false)),
-  },
-});
+const mapDispatchToProps = (dispatch, ownProps) => {
+  dispatch(AlertStore.actionCreators.setVisibility(ownProps.initialVisibility));
+  dispatch(AlertStore.actionCreators.setVisibility(ownProps.initialMessage));
+  return {
+    actions: {
+      close: () => dispatch(AlertStore.actionCreators.setVisibility(false)),
+    },
+  };
+};
 
 Alert.propTypes = {
   /** message to display */

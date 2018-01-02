@@ -21,7 +21,7 @@ const AlertClient = ({
   clearSuccess,
 }) => (
   <div>
-    <h1>Alert Client</h1>
+    <h2>Alert Client - Props Only</h2>
     <Alert message={errorMessage} alertVisible={errorVisible} type="danger" close={clearError} />
     <Alert message={infoMessage} alertVisible={infoVisible} type="info" close={clearInfo} />
     <Alert message={warningMessage} alertVisible={warningVisible} type="warning" close={clearWarning} />

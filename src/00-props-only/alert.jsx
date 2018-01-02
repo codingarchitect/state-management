@@ -3,12 +3,10 @@ import React from 'react';
 import { Alert as BootstrapAlert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-const Alert = ({ message, type, alertVisible, close }) => ((message) ?
-    (
-      alertVisible && <BootstrapAlert bsStyle={type} onDismiss={close}>
-        {message}
-      </BootstrapAlert>
-    ) : null);
+const Alert = ({ message, type, alertVisible, close }) => (alertVisible &&
+  <BootstrapAlert bsStyle={type} onDismiss={close}>
+    {message}
+  </BootstrapAlert>);
 
 Alert.propTypes = {
   /** message to display */

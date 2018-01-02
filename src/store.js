@@ -5,11 +5,15 @@ import { run } from '@cycle/run';
 import { makeHTTPDriver } from '@cycle/http';
 import { timeDriver } from '@cycle/time';
 
+import ReduxStoreAlertStore from './01-redux-store/alert-store';
+import ReduxStoreWithInitialPropsAlertStore from './02-redux-store-with-initial-props/alert-store';
+
 const cycleMiddleware = createCycleMiddleware();
 const { makeActionDriver, makeStateDriver } = cycleMiddleware;
 
 const store = createStore(combineReducers(
-  { dummy: state => state || {} }),
+  { ReduxStore: ReduxStoreAlertStore.reducer,
+    ReduxStoreWithInitialProps: ReduxStoreWithInitialPropsAlertStore.reducer }),
   {},
   applyMiddleware(cycleMiddleware));
 
