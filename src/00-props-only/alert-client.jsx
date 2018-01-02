@@ -11,6 +11,10 @@ const AlertClient = ({
   infoMessage,
   warningMessage,
   successMessage,
+  errorVisible,
+  infoVisible,
+  warningVisible,
+  successVisible,
   clearError,
   clearInfo,
   clearWarning,
@@ -18,10 +22,10 @@ const AlertClient = ({
 }) => (
   <div>
     <h1>Alert Client</h1>
-    <Alert message={errorMessage} type="danger" close={clearError} />
-    <Alert message={infoMessage} type="info" close={clearInfo} />
-    <Alert message={warningMessage} type="warning" close={clearWarning} />
-    <Alert message={successMessage} type="success" close={clearSuccess} />
+    <Alert message={errorMessage} alertVisible={errorVisible} type="danger" close={clearError} />
+    <Alert message={infoMessage} alertVisible={infoVisible} type="info" close={clearInfo} />
+    <Alert message={warningMessage} alertVisible={warningVisible} type="warning" close={clearWarning} />
+    <Alert message={successMessage} alertVisible={successVisible} type="success" close={clearSuccess} />
   </div>
   );
 
@@ -30,11 +34,15 @@ export const EnhancedAlertSample = compose(
   withState('infoMessage', 'setInfoMessage', 'This is an info message.' /* Initial infoMessage */),
   withState('warningMessage', 'setWarningMessage', 'This is a warning.' /* Initial warningMessage */),
   withState('successMessage', 'setSuccessMessage', 'This is an success message.' /* Initial successMessage */),
+  withState('errorVisible', 'setErrorVisible', true /* Initial errorMessage visibility */),
+  withState('infoVisible', 'setInfoVisible', true /* Initial infoMessage visibility */),
+  withState('warningVisible', 'setWarningVisible', true /* Initial warningMessage visibility */),
+  withState('successVisible', 'setSuccessVisible', true /* Initial successMessage  visibility */),
   withHandlers({
-    clearError: ({ setErrorMessage }) => () => setErrorMessage(null),
-    clearInfo: ({ setInfoMessage }) => () => setInfoMessage(null),
-    clearWarning: ({ setWarningMessage }) => () => setWarningMessage(null),
-    clearSuccess: ({ setSuccessMessage }) => () => setSuccessMessage(null),
+    clearError: ({ setErrorVisible }) => () => setErrorVisible(false),
+    clearInfo: ({ setInfoVisible }) => () => setInfoVisible(false),
+    clearWarning: ({ setWarningVisible }) => () => setWarningVisible(false),
+    clearSuccess: ({ setSuccessVisible }) => () => setSuccessVisible(false),
   }),
 )(AlertClient);
 
@@ -43,6 +51,10 @@ AlertClient.propTypes = {
   infoMessage: PropTypes.string,
   warningMessage: PropTypes.string,
   successMessage: PropTypes.string,
+  errorVisible: PropTypes.bool,
+  infoVisible: PropTypes.bool,
+  warningVisible: PropTypes.bool,
+  successVisible: PropTypes.bool,
   clearError: PropTypes.func.isRequired,
   clearInfo: PropTypes.func.isRequired,
   clearWarning: PropTypes.func.isRequired,
@@ -54,6 +66,10 @@ AlertClient.defaultProps = {
   infoMessage: '',
   warningMessage: '',
   successMessage: '',
+  errorVisible: true,
+  infoVisible: true,
+  warningVisible: true,
+  successVisible: true,
 };
 
 export default EnhancedAlertSample;
