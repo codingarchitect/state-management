@@ -7,13 +7,20 @@ import { timeDriver } from '@cycle/time';
 
 import ReduxStoreAlertStore from './01-redux-store/alert-store';
 import ReduxStoreWithInitialPropsAlertStore from './02-redux-store-with-initial-props/alert-store';
+import ReduxStoreMultiInstanceAlertStore from './03-redux-store-multi-instance/multi-alert-store';
+import ReduxStoreMultiConnectAlertStore from './04-redux-store-multi-connect/multi-alert-store';
+import ReduxStoreMultiStoreClientAlertStore from
+  './05-redux-store-multi-store-client/multi-alert-store';
 
 const cycleMiddleware = createCycleMiddleware();
 const { makeActionDriver, makeStateDriver } = cycleMiddleware;
 
 const store = createStore(combineReducers(
   { ReduxStore: ReduxStoreAlertStore.reducer,
-    ReduxStoreWithInitialProps: ReduxStoreWithInitialPropsAlertStore.reducer }),
+    ReduxStoreWithInitialProps: ReduxStoreWithInitialPropsAlertStore.reducer,
+    ReduxStoreMultiInstance: ReduxStoreMultiInstanceAlertStore.reducer,
+    ReduxStoreMultiConnect: ReduxStoreMultiConnectAlertStore.reducer,
+    ReduxStoreMultiStoreClient: ReduxStoreMultiStoreClientAlertStore.reducer }),
   {},
   applyMiddleware(cycleMiddleware));
 
