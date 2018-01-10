@@ -11,6 +11,8 @@ import ReduxStoreMultiConnectAlertClient from
   './04-redux-store-multi-connect/alert-client.jsx';
 import ReduxStoreMultiStoreClientAlertClient from
   './05-redux-store-multi-store-client/alert-client.jsx';
+import ReduxStoreInstanceAwareAlertClient from
+  './06-redux-store-instance-aware-action-creators/alert-client.jsx';
 
 const App = ({ dispatch }) => (
   <div>
@@ -23,6 +25,7 @@ const App = ({ dispatch }) => (
     <ReduxStoreMultiInstanceAlertClient />
     <ReduxStoreMultiConnectAlertClient />
     <ReduxStoreMultiStoreClientAlertClient />
+    <ReduxStoreInstanceAwareAlertClient />
   </div>
 );
 

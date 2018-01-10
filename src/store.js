@@ -11,6 +11,9 @@ import ReduxStoreMultiInstanceAlertStore from './03-redux-store-multi-instance/m
 import ReduxStoreMultiConnectAlertStore from './04-redux-store-multi-connect/multi-alert-store';
 import ReduxStoreMultiStoreClientAlertStore from
   './05-redux-store-multi-store-client/multi-alert-store';
+import ReduxStoreInstanceAwareActionCreatorsStore from
+  './06-redux-store-instance-aware-action-creators/multi-alert-store';
+
 
 const cycleMiddleware = createCycleMiddleware();
 const { makeActionDriver, makeStateDriver } = cycleMiddleware;
@@ -20,7 +23,8 @@ const store = createStore(combineReducers(
     ReduxStoreWithInitialProps: ReduxStoreWithInitialPropsAlertStore.reducer,
     ReduxStoreMultiInstance: ReduxStoreMultiInstanceAlertStore.reducer,
     ReduxStoreMultiConnect: ReduxStoreMultiConnectAlertStore.reducer,
-    ReduxStoreMultiStoreClient: ReduxStoreMultiStoreClientAlertStore.reducer }),
+    ReduxStoreMultiStoreClient: ReduxStoreMultiStoreClientAlertStore.reducer,
+    ReduxStoreMultiInstanceAware: ReduxStoreInstanceAwareActionCreatorsStore.reducer }),
   {},
   applyMiddleware(cycleMiddleware));
 

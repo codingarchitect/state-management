@@ -5,6 +5,7 @@ import bindActionCreators from './bind-action-creators';
 
 const makeSelector = (reducerPath, id) => state => (reducerPath ?
   _.get(state, reducerPath)[id] : state[id]);
+
 const isPropSelectorsValid = propSelectors =>
   propSelectors && typeof propSelectors === 'object';
 const makeMapStateToProps = (propSelectors, reducerPath) => (state, { id }) =>

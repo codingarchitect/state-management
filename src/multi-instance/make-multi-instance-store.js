@@ -1,5 +1,5 @@
 import makeMultiInstanceSelectors from './make-multi-instance-selectors';
-import wrapActionCreators from './wrap-action-creators';
+import wrapActionCreators from './lazy-wrap-action-creators';
 
 /**
  * takes a single instance store and makes it multi instance
@@ -39,7 +39,7 @@ const makeMultiInstanceStore = (store, reducerPath) => {
     reducer: multiInstanceReducer,
     selectors: makeMultiInstanceSelectors(selectors, initialState, reducerPath),
     initialState,
-    makeMultiInstanceActionCreators: id => wrapActionCreators(actionCreators, id),
+    idAwareActionCreators: wrapActionCreators(actionCreators),
   };
 };
 
